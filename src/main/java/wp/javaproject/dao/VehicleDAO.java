@@ -1,5 +1,8 @@
 package wp.javaproject.dao;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -31,6 +34,7 @@ public class VehicleDAO implements VehicleDAOInterface {
 		Session session = sessionFactory.openSession();
 		Transaction tr= session.beginTransaction();
 		Vehicle vehicle=session.get(Vehicle.class, number);
+		session.delete(vehicle);
 		tr.commit();
 		session.close();
 	}
@@ -61,5 +65,23 @@ public class VehicleDAO implements VehicleDAOInterface {
 		session.close();
 		return vehicle;
 	}
+
+	public Map<String, String> getAllNumbers(String email) {
+		Session session=sessionFactory.openSession();
+		Criteria cr= session.createCriteria(Vehicle.class);
+		Criterion crt= Restrictions.eq("transporter.email", email);
+		cr.add(crt);
+		List<Vehicle> vehicle=cr.list();
+		Map<String, String> map = new HashMap<String, String>();
+		for(Vehicle v: vehicle)
+		{
+			String key= v.getNumber();
+			String val=v.getModel();
+			map.put(key, val);
+		}
+		return map;
+	}
+	
+
 
 }

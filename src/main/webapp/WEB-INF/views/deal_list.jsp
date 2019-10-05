@@ -8,7 +8,7 @@
 		<td>Deal No.</td><td>Transporter Name</td><td>Description</td><td>Date</td><td>Destination City</td><td>Price</td><td>Raise a Query</td>
 	</tr>
 	
-	<jstl:forEach  var="deal" items="${deals}">
+	<jstl:forEach  var="deal" items="${deal}">
 		<tr>
 			<td>${deal.deal_no}</td>
 			<td>${deal.transporter.transporter_firm_name}</td>
@@ -16,11 +16,11 @@
 			<td>${deal.date}</td>
 			<td>${deal.goingto_city}</td>
 			<td>${deal.price}</td>
-			<td><a href="raisequery?number=${deal.transporter.transporter_id}id=${deal.user.user_id}">Raise Query</a></td>
+			<td><a href="raisequery?number=${deal.transporter.transporter_id}">Raise Query</a></td>
 		</tr>
 	</jstl:forEach>
 </table>
 <hr>
-<a href="user_home">Home</a>
+<a href="transporter_home">Home</a>
 </body>
 </html>
