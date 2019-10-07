@@ -33,6 +33,7 @@ public class UserController {
 	public ModelAndView addNewUser(@ModelAttribute("user") User user) {
 		userService.insertUser(user);
 		ModelAndView mv = new ModelAndView("register_user_succesfull");
+		mv.addObject("user", user);
 		return mv;
 	}
 	
@@ -50,6 +51,13 @@ public class UserController {
 	{
 		userService.updateUser(user);
 		ModelAndView mv = new ModelAndView("userlist");
+		return mv;
+	}
+	
+	@RequestMapping("user_home")
+	public ModelAndView home()
+	{
+		ModelAndView mv = new ModelAndView("home_user");
 		return mv;
 	}
 }

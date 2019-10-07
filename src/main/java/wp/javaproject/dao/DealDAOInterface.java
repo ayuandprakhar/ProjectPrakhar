@@ -10,4 +10,5 @@ public interface DealDAOInterface {
 	public void removeDeal(String deal_no);
 	public List<Deals> getAllDeals();
 	public List<Deals> getDealsByTransporter(String email);
+	public Deals getDealById(String deal_no);
 }

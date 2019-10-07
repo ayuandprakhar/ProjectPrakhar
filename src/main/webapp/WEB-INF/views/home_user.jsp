@@ -6,7 +6,7 @@
 	<pre>
 		<a href="viewdeals">View Deals</a>
 		<a href="update_user">Update Profile</a>
-		<a href="queryraise">Raise a Query</a>
+		<a href="viewresponse">View Response</a>
 		<a href="logout">Logout</a>
 	</pre>
 	<hr>

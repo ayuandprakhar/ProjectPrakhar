@@ -34,4 +34,8 @@ public class DealService implements DealServiceInterface {
 		return dealDAO.getDealsByTransporter(email);
 	}
 
+	public Deals getDealById(String deal_no) {
+		return dealDAO.getDealById(deal_no);
+	}
+
 }

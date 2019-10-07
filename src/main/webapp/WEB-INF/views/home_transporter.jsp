@@ -7,11 +7,12 @@
 		<a href="updatetransporter">Update Profile</a>
 		<a href="addvehicle1">Add Vehicle</a>
 		<a href="showallvehicle">View All Vehicles</a>
+		<a href="showalldeals">My deals</a>
 		<a href="postdeal">New Deal</a>
 		<a href="viewquries">View Queries</a>
 		<a href="logout">Logout</a>
 	</pre>
 	<hr>
-	<a href="Index.jsp">Home</a>
+	<a href="index.jsp">Home</a>
 </body>
 </html>

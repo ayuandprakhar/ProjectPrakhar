@@ -54,4 +54,13 @@ public class DealDAO implements DealDAOInterface {
 		return deals;
 	}
 
+	public Deals getDealById(String deal_no) {
+		Session session= sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
+		Deals deal= session.get(Deals.class, deal_no);
+		tr.commit();
+		session.close();
+		return deal;
+	}
+
 }

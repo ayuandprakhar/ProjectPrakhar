@@ -2,11 +2,14 @@
 <%@page isELIgnored="false" %>
 <html>
 <body>
-	<h3>User Registration</h3>
+	<h3>Query Registration</h3>
 	<hr>
-		<form:form action="submitquery" modelAttribute="query">
+		<form:form action="submitquery" modelAttribute="query" >
 		<pre>
+			ID			<form:input path="query_id"/>
 			Question		<form:input path="question"/>
+			<form:hidden path="user.email" value="${email}"/>
+			<form:hidden path="transporter.email" value="${deal.transporter.email}"/>
 				<input type="submit" value="Submit query"/>
 			</pre>
 		</form:form>

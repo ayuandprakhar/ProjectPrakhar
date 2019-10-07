@@ -1,9 +1,14 @@
 package wp.javaproject.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,6 +26,9 @@ public class LoginController {
 
 	@Autowired
 	private TransporterService transporterService;
+	
+	@Autowired
+	SessionFactory sessionFactory;
 	
 	@RequestMapping("verify")
 	public ModelAndView verifyUser(@RequestParam("email") String email, @RequestParam("password") String password,
@@ -72,5 +80,12 @@ public class LoginController {
 			}
 		}
 
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session)
+	{
+		session.invalidate();
+		return "index.jsp";
 	}
 }

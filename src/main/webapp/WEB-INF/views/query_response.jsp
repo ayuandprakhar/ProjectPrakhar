@@ -2,12 +2,15 @@
 <%@page isELIgnored="false" %>
 <html>
 <body>
-	<h3>User Registration</h3>
+	<h3>Query Response</h3>
 	<hr>
 		<form:form action="respondquery" modelAttribute="query">
 		<pre>
-			Question		<form:input path="question"/>
+			<form:hidden path="query_id"/>
+			Question		<form:input path="question" readonly="readonly"/>
 			Response		<form:input path="resp"/>
+			<form:hidden path="user.email"/>
+			<form:hidden path="transporter.email"/>
 				<input type="submit" value="Respond query"/>
 			</pre>
 		</form:form>

@@ -7,6 +7,8 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
@@ -77,6 +79,16 @@ public class UserDAO implements UserDAOInterface {
 				return null;
 			}
 		}
+	}
+
+	public List<User> getAllUserMails() {
+		Session session = sessionFactory.openSession();
+		Criteria cr= session.createCriteria(User.class);
+		ProjectionList projection = Projections.projectionList();
+		projection.add(Projections.property("email"));
+		cr.setProjection(projection);
+		List<User> user=cr.list();
+		return user;
 	}
 
 	

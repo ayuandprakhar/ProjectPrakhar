@@ -25,7 +25,7 @@ public class TransporterDAO implements TransporterDAOInterface {
 	session.close();
 	}
 
-	public void removeTransporter(int id) {
+	public void removeTransporter(String id) {
 		Session session = sessionFactory.openSession();
 		Transaction tr= session.beginTransaction();
 		Transporter transporter = session.get(Transporter.class, id);
@@ -36,12 +36,12 @@ public class TransporterDAO implements TransporterDAOInterface {
 	public void updateTransporter(Transporter transporter) {
 		Session session = sessionFactory.openSession();
 		Transaction tr= session.beginTransaction();
-		session.update(transporter);
+		session.saveOrUpdate(transporter);
 		tr.commit();
 		session.close();
 	}
 
-	public Transporter getTransporterById(int id) {
+	public Transporter getTransporterById(String id) {
 		Session session = sessionFactory.openSession();
 		Transaction tr= session.beginTransaction();
 		Transporter transporter = session.get(Transporter.class, id);

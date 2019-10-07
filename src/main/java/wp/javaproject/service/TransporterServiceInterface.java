@@ -7,9 +7,9 @@ import wp.javaproject.entities.Transporter;
 public interface TransporterServiceInterface {
 
 	public void insertTransporter(Transporter transporter);
-	public void removeTransporter(int id);
+	public void removeTransporter(String id);
 	public void updateTransporter(Transporter transporter);
-	public Transporter getTransporterById(int id);
+	public Transporter getTransporterById(String id);
 	public List<Transporter> getAllTransporter();
 	public Transporter verifyTransporter(Transporter transporter);
 }

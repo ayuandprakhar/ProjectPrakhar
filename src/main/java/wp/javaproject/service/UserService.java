@@ -39,6 +39,10 @@ public class UserService implements UserServiceInterface {
 	public User verifyUser(User user) {
 		return userDAO.verifyUser(user);
 	}
+
+	public List<User> getAllUserMails() {
+		return userDAO.getAllUserMails();
+	}
 	
 	
 

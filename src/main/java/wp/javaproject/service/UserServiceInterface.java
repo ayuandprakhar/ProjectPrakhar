@@ -12,4 +12,5 @@ public interface UserServiceInterface {
 	public User getUserById(String email);
 	public List<User> getAllUser();
 	public User verifyUser(User user);
+	public List<User> getAllUserMails();
 }

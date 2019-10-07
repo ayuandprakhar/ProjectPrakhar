@@ -20,7 +20,7 @@ public class TransporterService implements TransporterServiceInterface {
 		transporterDAO.insertTransporter(transporter);
 	}
 
-	public void removeTransporter(int id) {
+	public void removeTransporter(String id) {
 		transporterDAO.removeTransporter(id);
 	}
 
@@ -28,7 +28,7 @@ public class TransporterService implements TransporterServiceInterface {
 		transporterDAO.updateTransporter(transporter);
 	}
 
-	public Transporter getTransporterById(int id) {
+	public Transporter getTransporterById(String id) {
 		return transporterDAO.getTransporterById(id);
 	}
 
