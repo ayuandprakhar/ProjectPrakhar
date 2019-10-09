@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -56,10 +57,19 @@ public class DealsController {
 	}
 	
 	@RequestMapping("showalldeals")
-	public ModelAndView showAll(@ModelAttribute("deal") Deals deal, @SessionAttribute("email") String email)
+	public ModelAndView showAll(@SessionAttribute("email") String email)
+	{
+		List<Deals> deals= dealService.getDealsByTransporter(email);
+		ModelAndView mv= new ModelAndView("transporter_deal");
+		mv.addObject("deal", deals);
+		return mv;
+	}
+	
+	@RequestMapping("viewdealsadmin")
+	public ModelAndView viewAllAdmin(@ModelAttribute("deal") Deals deal)
 	{
 		List<Deals> deals= dealService.getAllDeals();
-		ModelAndView mv= new ModelAndView("deal_list");
+		ModelAndView mv= new ModelAndView("admin_deal");
 		mv.addObject("deal", deals);
 		return mv;
 	}
@@ -85,5 +95,28 @@ public class DealsController {
 		mailSender.send(mailMessage);
 	}
 	
+	@RequestMapping("removedeal")
+	public ModelAndView deleteDeal(@RequestParam("number") String number)
+	{
+		dealService.removeDeal(number);
+		ModelAndView mv= new ModelAndView("redirect:viewdealsadmin");
+		return mv;
+	}
 	
+	@RequestMapping("openupdatedeal")
+	public ModelAndView openUpdateDeal(@RequestParam("number") String number)
+	{
+		Deals deal=dealService.getDealById(number);
+		ModelAndView mv= new ModelAndView("update_deal");
+		mv.addObject("deal", deal);
+		return mv;
+	}
+	
+	@RequestMapping("updatedeal")
+	public ModelAndView updateDeal(@ModelAttribute("deal") Deals deal)
+	{
+		dealService.updateDeal(deal);
+		ModelAndView mv= new ModelAndView("redirect:showalldeals");
+		return mv;
+	}
 }

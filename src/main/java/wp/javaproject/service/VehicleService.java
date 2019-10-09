@@ -40,4 +40,8 @@ public class VehicleService implements VehicleServiceInterface {
 		
 		return vehicleDAO.getAllNumbers(email);
 	}
+
+	public List<Vehicle> getAllVehicles() {
+		return vehicleDAO.getAllVehicles();
+	}
 }

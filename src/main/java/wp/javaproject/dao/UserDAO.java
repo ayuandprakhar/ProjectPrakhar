@@ -32,6 +32,7 @@ public class UserDAO implements UserDAOInterface {
 		Session session = sessionFactory.openSession();
 		Transaction tr= session.beginTransaction();
 		User user = session.get(User.class, email);
+		session.delete(user);
 		tr.commit();
 		session.close();
 		}

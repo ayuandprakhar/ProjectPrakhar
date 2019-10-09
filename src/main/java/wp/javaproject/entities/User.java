@@ -3,6 +3,7 @@ package wp.javaproject.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,7 +18,7 @@ private String password;
 private String mobile;
 private String address;
 
-@OneToMany(mappedBy = "user")
+@OneToMany(mappedBy = "user",orphanRemoval = true, cascade = CascadeType.PERSIST)
 private List<Query> query= new ArrayList<Query>();
 
 public List<Query> getQuery() {

@@ -47,7 +47,7 @@ public class DealDAO implements DealDAOInterface {
 	public List<Deals> getDealsByTransporter(String email) {
 		Session session= sessionFactory.openSession();
 		Criteria cr= session.createCriteria(Deals.class);
-		Criterion crt= Restrictions.eq("vehicle.transporter.email", email);
+		Criterion crt= Restrictions.eq("transporter.email", email);
 		cr.add(crt);
 		List<Deals> deals= cr.list();
 		session.close();
@@ -61,6 +61,14 @@ public class DealDAO implements DealDAOInterface {
 		tr.commit();
 		session.close();
 		return deal;
+	}
+
+	public void updateDeal(Deals deal) {
+		Session session= sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
+		session.update(deal);
+		tr.commit();
+		session.close();
 	}
 
 }

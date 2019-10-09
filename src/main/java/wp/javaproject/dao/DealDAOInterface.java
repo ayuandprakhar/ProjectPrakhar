@@ -11,4 +11,5 @@ public interface DealDAOInterface {
 	public List<Deals> getAllDeals();
 	public List<Deals> getDealsByTransporter(String email);
 	public Deals getDealById(String deal_no);
+	public void updateDeal(Deals deal);
 }

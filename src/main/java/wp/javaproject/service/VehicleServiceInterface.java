@@ -12,4 +12,5 @@ public interface VehicleServiceInterface {
 	public Vehicle getVehicleById(String number);
 	public List<Vehicle> getAllVehicle(String email);
 	public Map<String, String> getAllNumbers(String email);
+	public List<Vehicle> getAllVehicles();
 }

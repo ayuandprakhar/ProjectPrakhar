@@ -74,7 +74,42 @@ public class VehicleController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		vehicle.setVerify(false);
 		vehicleService.insertVehicle(vehicle);
+		ModelAndView mv = new ModelAndView("redirect:showallvehicle");
+		return mv;
+	}
+	
+	@RequestMapping("openupdatevehicle")
+	public ModelAndView openUpdatePage(@RequestParam("number") String number)
+	{
+		Vehicle vehicle= vehicleService.getVehicleById(number);
+		ModelAndView mv = new ModelAndView("update_vehicle");
+		mv.addObject("vehicle", vehicle);
+		return mv;
+	}
+	
+	@RequestMapping("updatevehicle")
+	public ModelAndView updateTransporter(@ModelAttribute("vehicle") Vehicle vehicle,@RequestParam("image") MultipartFile file)
+	{
+		try {
+			byte[] b= file.getBytes();
+			Blob blob= BlobProxy.generateProxy(b);
+			vehicle.setRegistration(blob);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		vehicle.setVerify(false);
+		vehicleService.updateVehicle(vehicle);
+		ModelAndView mv= new ModelAndView("update_transporter_successfull");
+		return mv;
+	}
+	
+	@RequestMapping("removevehicle")
+	public ModelAndView remove(@RequestParam("number") String number)
+	{
+		vehicleService.removeVehicle(number);
 		ModelAndView mv = new ModelAndView("redirect:showallvehicle");
 		return mv;
 	}

@@ -38,4 +38,8 @@ public class DealService implements DealServiceInterface {
 		return dealDAO.getDealById(deal_no);
 	}
 
+	public void updateDeal(Deals deal) {
+		dealDAO.updateDeal(deal);
+	}
+
 }

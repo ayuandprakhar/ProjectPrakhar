@@ -6,7 +6,7 @@
 	<pre>
 		<a href="viewusers">View Users</a>
 		<a href="viewtransporter">View Transporter</a>
-		<a href="viewdeals">View Deals</a>
+		<a href="viewdealsadmin">View Deals</a>
 		<a href="viewvehicles">View Vehicle</a>
 		<a href="viewratings">Show Ratings</a>
 		<a href="logout">Logout</a>

@@ -5,7 +5,7 @@
 <h3>Vehicle List</h3>
 <table border="2">
 	<tr>
-		<td>RC No</td><td>Model</td><td>Type</td><td>Proof</td><td>Update Details</td><td>Remove Vehicle</td>
+		<td>RC No</td><td>Model</td><td>Type</td><td>Proof</td><td>Approve Vehicle</td><td>Reject Vehicle</td>
 	</tr>
 	
 	<jstl:forEach  var="vehicle" items="${vehicle}">
@@ -14,8 +14,8 @@
 			<td>${vehicle.model}</td>
 			<td>${vehicle.type}</td>
 			<td><img width="50" height="50" src="viewimage?number=${vehicle.number}"/></td>
-			<td><a href="openupdatevehicle?number=${vehicle.number}">Update</a></td>
-			<td><a href="removevehicle?number=${vehicle.number}">Remove</a></td>
+			<td><a href="approvevehicle?number=${vehicle.number}">Approve</a></td>
+			<td><a href="rejectvehicle?number=${vehicle.number}">Reject</a></td>
 		</tr>
 	</jstl:forEach>
 </table>

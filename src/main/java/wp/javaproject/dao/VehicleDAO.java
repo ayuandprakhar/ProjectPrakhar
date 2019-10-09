@@ -1,5 +1,4 @@
 package wp.javaproject.dao;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +79,13 @@ public class VehicleDAO implements VehicleDAOInterface {
 			map.put(key, val);
 		}
 		return map;
+	}
+
+	public List<Vehicle> getAllVehicles() {
+		Session session = sessionFactory.openSession();
+		Criteria cr= session.createCriteria(Vehicle.class);
+		List<Vehicle> vehicle=cr.list();
+		return vehicle;
 	}
 	
 
