@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -30,16 +31,16 @@ public class Transporter {
 		this.verify = verify;
 	}
 
-	@OneToMany(mappedBy="transporter")
+	@OneToMany(mappedBy="transporter",orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private List<Vehicle> vehicle = new ArrayList<Vehicle>();
 	
-	@OneToMany(mappedBy="transporter")
+	@OneToMany(mappedBy="transporter",orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private List<Deals> deals= new ArrayList<Deals>();
 	
-	@OneToMany(mappedBy = "transporter")
+	@OneToMany(mappedBy = "transporter",orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private List<Query> query= new ArrayList<Query>();
 	
-	@OneToOne(mappedBy = "transporter")
+	@OneToOne(mappedBy = "transporter",orphanRemoval = true, cascade = CascadeType.PERSIST)
 	private Rating rating;
 	
 	

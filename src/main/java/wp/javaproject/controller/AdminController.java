@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import wp.javaproject.entities.Rating;
 import wp.javaproject.entities.Transporter;
 import wp.javaproject.entities.Vehicle;
 import wp.javaproject.service.DealServiceInterface;
+import wp.javaproject.service.RatingServiceInterface;
 import wp.javaproject.service.TransporterServiceInterface;
 import wp.javaproject.service.VehicleServiceInterface;
 
@@ -29,6 +32,9 @@ public class AdminController {
 	
 	@Autowired
 	DealServiceInterface dealService;
+	
+	@Autowired
+	RatingServiceInterface ratingService;
 	
 	@RequestMapping("viewtransporter")
 	public ModelAndView showTransporters()
@@ -71,9 +77,26 @@ public class AdminController {
 	public ModelAndView rejectTransporter(@RequestParam("number") String number)
 	{
 		Transporter transporter= transporterService.getTransporterById(number);
-		transporter.setVerify(true);
+		transporter.setVerify(false);
 		transporterService.updateTransporter(transporter);
 		ModelAndView mv= new ModelAndView("redirect:viewtransporter");
+		return mv;
+	}
+	
+	@RequestMapping("removetransporter")
+	public ModelAndView deleteTransporter(@RequestParam("number") String email)
+	{
+		transporterService.removeTransporter(email);
+		ModelAndView mv= new ModelAndView("delete_transporter");
+		return mv;
+	}
+	
+	@RequestMapping("viewratings")
+	public ModelAndView showRating()
+	{
+		List<Rating> rating= ratingService.getAllRating();
+		ModelAndView mv= new ModelAndView("view_rating");
+		mv.addObject("rating",rating);
 		return mv;
 	}
 }

@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl" %>
 <html>
 <body>
-<h3>Deal List</h3>
+<h3>Query List</h3>
 <table border="2">
 	<tr>
 		<td>Query No.</td><td>User Name</td><td>Query</td><td>Respond to Query</td>

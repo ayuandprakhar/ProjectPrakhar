@@ -1,8 +1,13 @@
 package wp.javaproject.dao;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -42,9 +47,24 @@ public class RatingDAO implements RatingDAOInterface {
 
 	}
 
-	public int getRating(String email) {
-		
-		return 0;
+	public List<Rating> getRating(String email) {
+		Session session= sessionFactory.openSession();
+		Criteria cr= session.createCriteria(Rating.class);
+		Criterion crt= Restrictions.eq("transporter.email", email);
+		cr.add(crt);
+		List<Rating> rating= cr.list();
+		session.close();
+		return rating;
 	}
+
+	public List<Rating> getAllRatings() {
+		Session session= sessionFactory.openSession();
+		Criteria cr= session.createCriteria(Rating.class);
+		List<Rating> rating=cr.list();
+		session.close();
+		return rating;
+	}
+	
+	
 
 }
