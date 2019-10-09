@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Transporter {
@@ -38,8 +39,40 @@ public class Transporter {
 	@OneToMany(mappedBy = "transporter")
 	private List<Query> query= new ArrayList<Query>();
 	
+	@OneToOne(mappedBy = "transporter")
+	private Rating rating;
 	
 	
+	
+	public Transporter(String email) {
+		super();
+		this.email = email;
+	}
+	public Rating getRating() {
+		return rating;
+	}
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+	public Transporter(String email, String transporter_id, String transporter_firm_name, String password,
+			String transporter_address, String mobile, String transporter_pan_no, String transporter_gst_no,
+			Blob idproof, boolean verify, List<Vehicle> vehicle, List<Deals> deals, List<Query> query, Rating rating) {
+		super();
+		this.email = email;
+		this.transporter_id = transporter_id;
+		this.transporter_firm_name = transporter_firm_name;
+		this.password = password;
+		this.transporter_address = transporter_address;
+		this.mobile = mobile;
+		this.transporter_pan_no = transporter_pan_no;
+		this.transporter_gst_no = transporter_gst_no;
+		this.idproof = idproof;
+		this.verify = verify;
+		this.vehicle = vehicle;
+		this.deals = deals;
+		this.query = query;
+		this.rating = rating;
+	}
 	public Transporter(String transporter_id, String transporter_firm_name, String email, String password,
 			String transporter_address, String mobile, String transporter_pan_no, String transporter_gst_no,
 			Blob idproof, List<Vehicle> vehicle, List<Deals> deals, List<Query> query) {

@@ -84,4 +84,6 @@ public class DealsController {
 		mailMessage.setText(message);
 		mailSender.send(mailMessage);
 	}
+	
+	
 }
