@@ -29,6 +29,7 @@ public class TransporterDAO implements TransporterDAOInterface {
 		Session session = sessionFactory.openSession();
 		Transaction tr= session.beginTransaction();
 		Transporter transporter = session.get(Transporter.class, id);
+		session.delete(transporter);
 		tr.commit();
 		session.close();
 	}
