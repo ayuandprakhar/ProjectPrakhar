@@ -63,23 +63,6 @@ public class AdminController {
 		}
 	}
 	
-	@RequestMapping("viewimage")
-	public void loadImage(@RequestParam("number") String number,HttpServletResponse response)
-	{
-		Vehicle vehicle= vehicleService.getVehicleById(number);
-		Blob blob= vehicle.getRegistration();
-		try {
-		byte[] b= null;
-		b= blob.getBytes(1, (int)blob.length());
-		ServletOutputStream sos = response.getOutputStream();
-		sos.write(b);
-		sos.close();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
 	
 	@RequestMapping("allvehicles")
 	public ModelAndView showVehicles()

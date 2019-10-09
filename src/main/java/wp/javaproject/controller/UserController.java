@@ -1,7 +1,10 @@
 package wp.javaproject.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -18,9 +21,6 @@ public class UserController {
 	@Autowired
 	private UserServiceInterface userService;
 
-	@Autowired
-	private TransporterService transporterService;
-
 	@RequestMapping("openregisteruser")
 	public ModelAndView openRegistrationPage() {
 		User user = new User();
@@ -30,7 +30,12 @@ public class UserController {
 	}
 
 	@RequestMapping("adduser")
-	public ModelAndView addNewUser(@ModelAttribute("user") User user) {
+	public ModelAndView addNewUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
+		if(result.hasErrors())
+		{
+			ModelAndView mv = new ModelAndView("user_registration");
+			return mv;
+		}
 		userService.insertUser(user);
 		ModelAndView mv = new ModelAndView("register_user_succesfull");
 		mv.addObject("user", user);

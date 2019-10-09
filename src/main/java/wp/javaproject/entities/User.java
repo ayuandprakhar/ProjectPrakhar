@@ -7,14 +7,20 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class User {
 @Id
 private String email;
 private String user_id;
+
+@Pattern(regexp="[a-zA-Z]*", message="Only Alphabates Allowed")
 private String user_name;
+
 private String password;
+
+@Pattern(regexp="[0-9]*", message="Only Numbers Allowed")
 private String mobile;
 private String address;
 
