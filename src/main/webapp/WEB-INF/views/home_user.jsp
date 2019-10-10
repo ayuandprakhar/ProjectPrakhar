@@ -10,6 +10,5 @@
 		<a href="logout">Logout</a>
 	</pre>
 	<hr>
-	<a href="index.jsp">Home</a>
 </body>
 </html>

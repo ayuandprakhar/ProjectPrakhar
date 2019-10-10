@@ -14,6 +14,6 @@
 			</pre>
 		</form:form>
 	<hr>
-	<a href="index.jsp">Home</a>
+	<a href="user_home">Home</a>
 </body>
 </html>

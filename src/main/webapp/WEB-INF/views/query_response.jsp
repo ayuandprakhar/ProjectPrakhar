@@ -15,6 +15,6 @@
 			</pre>
 		</form:form>
 	<hr>
-	<a href="index.jsp">Home</a>
+	<a href="transporter_home">Home</a>
 </body>
 </html>

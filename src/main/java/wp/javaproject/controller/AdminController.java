@@ -130,4 +130,10 @@ public class AdminController {
 		return mv;
 	}
 	
+	@RequestMapping("admin_home")
+	public ModelAndView transporterHome()
+	{
+		ModelAndView mv= new ModelAndView("home_admin");
+		return mv;
+	}
 }

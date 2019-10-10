@@ -13,6 +13,7 @@
 			<td>${vehicle.number}</td>
 			<td>${vehicle.model}</td>
 			<td>${vehicle.type}</td>
+			<td>${vehicle.transporter.transporter_firm_name}</td>
 			<td><img width="50" height="50" src="viewimage?number=${vehicle.number}"/></td>
 			<td><a href="approvevehicle?number=${vehicle.number}">Approve</a></td>
 			<td><a href="rejectvehicle?number=${vehicle.number}">Reject</a></td>
@@ -20,6 +21,6 @@
 	</jstl:forEach>
 </table>
 <hr>
-<a href="transporter_home">Home</a>
+<a href="admin_home">Home</a>
 </body>
 </html>

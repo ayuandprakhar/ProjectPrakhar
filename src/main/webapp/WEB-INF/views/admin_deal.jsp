@@ -27,6 +27,6 @@
 		</jstl:forEach>
 	</table>
 	<hr>
-	<a href="user_home">Home</a>
+	<a href="admin_home">Home</a>
 </body>
 </html>
